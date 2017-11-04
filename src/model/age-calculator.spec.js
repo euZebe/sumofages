@@ -12,7 +12,7 @@ test('calculator should throw an error if no participant', () => {
     expect(() => getDateForAccruedAges(25)).toThrow(NoParticipantError);
 })
 
-test('calculator should return one year later when today is the only participant\'s birthday and expected is +1', () => {
+test('calculator should return X years later when today is the only participant\'s birthday and expected is +X', () => {
     const _36YearsAgo = moment().add(-36, 'years').startOf('day');
     const _36YearOldParticipant = new Participant(_36YearsAgo);
     const EXPECTED_AGE = 40;
@@ -36,7 +36,7 @@ test('calculator should return the date of the previous birthday when expecting 
 
 
 
-test('calculator should return one year later when today is the only participant\'s birthday and expected is +1', () => {
+test('calculator should return next birthday when two participants and expected is sum + 1', () => {
     const _36YearsAgo = moment().add(-36, 'years').startOf('day');
     const _36YearOldParticipant = new Participant(_36YearsAgo);
     const _3YearsAnd8MonthsAgo = moment().year(now.year() - 3).month(now.month() - 8);
@@ -51,3 +51,17 @@ test('calculator should return one year later when today is the only participant
         ).startOf('day')).toEqual(nextBirthdayOf3YearOldParticipant);
 })
 
+test('calculator should return dorothee\'s birthay', () => {
+    const dorothee = new Participant(moment([1981, 4, 18]), 'Dorothée');
+    const jean = new Participant(moment([1981, 9, 26]), 'Jean');
+    const alienor = new Participant(moment([2014, 2, 15]), 'Aliénor');
+    const samuel = new Participant(moment([2015, 6, 17]), 'Samuel');
+    const quentin = new Participant(moment([2017, 0, 3]), 'Quentin');
+
+    expect(getDateForAccruedAges(
+        80,
+        dorothee, jean, alienor, samuel, quentin,
+    ).startOf('day')).toEqual(moment([2018, 4, 18]));
+})
+
+// TODO: deal with expectedAge in the past
