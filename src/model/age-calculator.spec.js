@@ -58,10 +58,16 @@ test('calculator should return dorothee\'s birthay', () => {
     const samuel = new Participant(moment([2015, 6, 17]), 'Samuel');
     const quentin = new Participant(moment([2017, 0, 3]), 'Quentin');
 
-    expect(getDateForAccruedAges(
+    const result = getDateForAccruedAges(
         80,
         dorothee, jean, alienor, samuel, quentin,
-    ).startOf('day')).toEqual(moment([2018, 4, 18]));
+    ).startOf('day');
+    expect(result).toEqual(moment(dorothee.dateOfBirth).year(2018));
 })
 
-// TODO: deal with expectedAge in the past
+test('quand on aura 20 ans en l\'an 2001', () => {
+    const dorothee = new Participant(moment([1981, 4, 18]), 'Dorothée');
+    const jean = new Participant(moment([1981, 9, 26]), 'Jean');
+
+    expect(getDateForAccruedAges(40, dorothee, jean).startOf('day')).toEqual(moment(jean.dateOfBirth).year(2001));
+})

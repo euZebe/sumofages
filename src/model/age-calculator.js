@@ -28,16 +28,21 @@ function getDateForAccruedAges(expectedAge: number, ...participants: Participant
         throw NoParticipantError;
     }
 
-    const sumOfAges = participants.reduce((sum, p) => sum + p.age, 0);
+    const sortedByNextBirthday = sortByNextBirthday(participants);
+    const sortedByAge = sortByAge(participants);
 
-    const quotient = Math.floor((expectedAge - sumOfAges) / participants.length);
-    const rest = (expectedAge - sumOfAges) % participants.length;
-    const participantsByNextBirthday = sortByNextBirthday(participants);
-    if (rest === 0) {
-        const index = participantsByNextBirthday.length - 1;
-        return moment().add(quotient, 'years').dayOfYear(participantsByNextBirthday[index].dateOfBirth.dayOfYear());
+    const birthdays = [];
+    let year = sortedByAge[0].dateOfBirth.year() + 1;
+    while (birthdays.length < expectedAge) {
+        for (let p of sortedByNextBirthday) {
+            const newBirthday = moment(p.dateOfBirth).year(year);
+            if (newBirthday.diff(p.dateOfBirth) >= 1) {
+                birthdays.push(newBirthday);
+            }
+        }
+        year++;
     }
-    return moment().add(quotient, 'years').dayOfYear(participantsByNextBirthday[rest - 1].dateOfBirth.dayOfYear());
+    return birthdays[expectedAge - 1];
 }
 
 function sortByNextBirthday(participants: Participant[]): Participant[] {
@@ -49,6 +54,12 @@ function sortByNextBirthday(participants: Participant[]): Participant[] {
     const first = sortedByDayOfYear.slice(sortedByDayOfYear.length - nbElementsToShift);
     const second = sortedByDayOfYear.slice(0, sortedByDayOfYear.length - nbElementsToShift);
     return first.concat(second);
+}
+
+function sortByAge(participants: Participant[]): Participant[] {
+    return participants
+        .slice(0) // shallow copy
+        .sort((p1, p2) => p1.dateOfBirth.diff(p2.dateOfBirth));
 }
 
 export { Participant, getDateForAccruedAges, NoParticipantError, NoExpectationError };
