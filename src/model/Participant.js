@@ -1,13 +1,16 @@
 // @flow
 
 import moment from 'moment'
+import shortid from 'shortid'
 
 export default class Participant {
 
+    id: string;
     name: string;
     dateOfBirth: moment;
 
     constructor(dateOfBirth: moment = moment(), name: string = '') {
+        this.id = shortid.generate();
         this.name = name;
         this.dateOfBirth = moment(dateOfBirth.startOf('day'));
     }

@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "4.0.0-beta",
     "moment": "2.19.1",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react-datepicker": "0.60.0",
+    "react-dom": "^16.0.0",
+    "reactstrap": "5.0.0-alpha.3",
+    "shortid": "2.2.8"
   },
   "devDependencies": {
     "flow-bin": "0.58.0",

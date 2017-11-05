@@ -6,6 +6,7 @@ import Participant from './Participant'
 
 const NoParticipantError = new Error('No participant');
 const NoExpectationError = new Error('No expected age');
+const InvalidParticipantDateOfBirth = new Error('Invalid participant date of birth');
 
 /**
  * get the date when participants summed ages will be the expected age
@@ -20,6 +21,11 @@ function getDateForAccruedAges(expectedAge: number, ...participants: Participant
     if (!participants.length) {
         throw NoParticipantError;
     }
+    participants.forEach(p => {
+        if (!p.dateOfBirth || !p.dateOfBirth.isValid()) {
+            throw InvalidParticipantDateOfBirth;
+        }
+    })
 
     const sortedByNextBirthday = sortByNextBirthday(participants);
     const olderPerson = sortByAge(participants)[0];
@@ -58,4 +64,16 @@ function sortByAge(participants: Participant[]): Participant[] {
     return participants.sort((p1, p2) => p1.dateOfBirth.diff(p2.dateOfBirth));
 }
 
-export { Participant, getDateForAccruedAges, NoParticipantError, NoExpectationError };
+function getDateForAccruedDays(expectedAge: number, ...participants: Participant[]): moment {
+    return null;
+}
+
+
+export {
+    Participant,
+    getDateForAccruedAges,
+    getDateForAccruedDays,
+    NoParticipantError,
+    NoExpectationError,
+    InvalidParticipantDateOfBirth,
+};

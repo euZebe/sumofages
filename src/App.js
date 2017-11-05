@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import { Jumbotron } from 'reactstrap';
 import './App.css';
+import Form from './Form'
 
-class App extends Component {
+class App extends React.Component {
 
     constructor() {
         super();
@@ -14,13 +15,15 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <h1 className="App-title">Welcome to React</h1>
-                </header>
-                <p className="App-intro">
-                    {this.state.sum}
-                </p>
+                <Jumbotron>
+                    <h1>Sumofages</h1>
+                    <p>
+                        This is a simple tool to get the accrued age of several persons,
+                        and to get the date when this sum will reach a certain age.
+                    </p>
+                    <hr className="my-2" />
+                    <Form/>
+                </Jumbotron>
             </div>
         );
     }
