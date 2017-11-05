@@ -18,4 +18,8 @@ export default class Participant {
     get age(): number {
         return moment().diff(this.dateOfBirth, 'years');
     }
+
+    toString(): string {
+        return JSON.stringify({id: this.id, name: this.name, dateOfBirth: this.dateOfBirth.toString()})
+    }
 }

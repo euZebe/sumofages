@@ -6,7 +6,12 @@ import Participant from './Participant'
 
 const NoParticipantError = new Error('No participant');
 const NoExpectationError = new Error('No expected age');
-const InvalidParticipantDateOfBirth = new Error('Invalid participant date of birth');
+
+class InvalidParticipantDateOfBirth extends Error {
+    constructor(invalidParticipant) {
+        super(`Invalid participant date of birth: ${invalidParticipant}`);
+    }
+}
 
 /**
  * get the date when participants summed ages will be the expected age
@@ -23,7 +28,7 @@ function getDateForAccruedAges(expectedAge: number, ...participants: Participant
     }
     participants.forEach(p => {
         if (!p.dateOfBirth || !p.dateOfBirth.isValid()) {
-            throw InvalidParticipantDateOfBirth;
+            throw new InvalidParticipantDateOfBirth(p);
         }
     })
 
@@ -34,7 +39,7 @@ function getDateForAccruedAges(expectedAge: number, ...participants: Participant
     let year = olderPerson.dateOfBirth.year() + 1;
     while (birthdays.length < expectedAge) {
         for (let p of sortedByNextBirthday) {
-            const newBirthday = moment(p.dateOfBirth).year(year);
+            const newBirthday = p.dateOfBirth.clone().year(year);
             if (newBirthday.diff(p.dateOfBirth) >= 1) {
                 birthdays.push(newBirthday);
             }
@@ -67,7 +72,6 @@ function sortByAge(participants: Participant[]): Participant[] {
 function getDateForAccruedDays(expectedAge: number, ...participants: Participant[]): moment {
     return null;
 }
-
 
 export {
     Participant,

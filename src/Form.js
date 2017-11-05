@@ -10,6 +10,7 @@ export default class Form extends React.Component {
         super();
         this.state = {
             participants: [new Participant()],
+            expectedAge: '',
             resultDate: '',
         };
     }
@@ -29,26 +30,37 @@ export default class Form extends React.Component {
         );
         const allDatesFilled = this.state.participants.reduce(
             (allFilled, p) => allFilled && p.dateOfBirth && p.dateOfBirth.isValid()
-        , true);
+            , true);
         if (allDatesFilled) {
             this.addParticipant();
         }
     }
 
     setExpectedAge = (field) => {
-        this.expectedAge = field.target.value;
+        this.setState({
+            expectedAge: Number.parseInt(field.target.value, 10) || undefined,
+            resultDate: ''
+        });
     }
 
     process = () => {
-        const resultDate = getDateForAccruedAges(this.expectedAge, this.state.participants);
-        this.setState({ resultDate });
+        const { expectedAge, participants } = this.state;
+        try {
+            // remove the last participant as it is a blank one
+            const resultDate = getDateForAccruedAges(expectedAge, ...participants.slice(0, participants.length - 1));
+            this.setState({ resultDate });
+        } catch (error) {
+            this.setState({ error });
+        }
     }
 
     render() {
-        const { participants, resultDate } = this.state;
+        const { participants, resultDate, expectedAge, error } = this.state;
+        const disableProcess = !expectedAge && true;
         return (
             <div>
                 <h5>Participants</h5>
+                {error && <h6 className='error'>{error.message}</h6>}
                 {participants.map((p, index) =>
                     <ParticipantInput
                         key={p.id}
@@ -62,9 +74,10 @@ export default class Form extends React.Component {
                     name='expectedAge'
                     placeholder='expected age'
                     onChange={this.setExpectedAge}
+                    value={expectedAge}
                 />
-                <Button color='primary' type='submit' onClick={this.process}>OK</Button>
-                {resultDate && <h6>You will reach {this.expectedAge} years old the {resultDate}</h6>}
+                <Button color='primary' type='submit' onClick={this.process} disabled={disableProcess}>OK</Button>
+                {resultDate && <h6>You will reach {expectedAge} years old the {resultDate.format('DD/MM/YYYY')}</h6>}
             </div>
         );
     }
