@@ -26,14 +26,20 @@ function getDateForAccruedAges(expectedAge: number, ...participants: Participant
     if (!participants.length) {
         throw NoParticipantError;
     }
-    participants.forEach(p => {
+
+    const participantsAsIterable = participants[0].length
+        ? participants[0] // participants parameter given as an array
+        : participants // participants parameter given as an iterable
+        ;
+
+    participantsAsIterable.forEach(p => {
         if (!p.dateOfBirth || !p.dateOfBirth.isValid()) {
             throw new InvalidParticipantDateOfBirth(p);
         }
     })
 
-    const sortedByNextBirthday = sortByNextBirthday(participants);
-    const olderPerson = sortByAge(participants)[0];
+    const sortedByNextBirthday = sortByNextBirthday(participantsAsIterable);
+    const olderPerson = sortByAge(participantsAsIterable)[0];
 
     const birthdays = [];
     let year = olderPerson.dateOfBirth.year() + 1;

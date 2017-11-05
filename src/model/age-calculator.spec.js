@@ -56,19 +56,26 @@ test('calculator should return next birthday when two participants and expected 
 })
 
 test('calculator should return julie\'s birthay', () => {
-    const julie = new Participant(moment([1981, 4, 18]), 'Dorothée');
-    const euZebe = new Participant(moment([1981, 9, 26]), 'Jean');
-    const niobe = new Participant(moment([2014, 2, 15]), 'Aliénor');
-    const ernest = new Participant(moment([2015, 6, 17]), 'Samuel');
-    const titouan = new Participant(moment([2017, 0, 3]), 'Quentin');
+    const julie = new Participant(moment([1981, 4, 15]), 'Julie');
+    const euZebe = new Participant(moment([1981, 9, 22]), 'euZèbe');
+    const niobe = new Participant(moment([2014, 2, 12]), 'Niobé');
+    const ernest = new Participant(moment([2015, 6, 12]), 'Ernest');
+    const titouan = new Participant(moment([2017, 0, 1]), 'Titouan');
 
     const result = getDateForAccruedAges(80, julie, euZebe, niobe, ernest, titouan);
     expect(result).toEqual(moment(julie.dateOfBirth).year(2018));
 })
 
 test('quand on aura 20 ans en l\'an 2001', () => {
-    const julie = new Participant(moment([1981, 4, 18]), 'Dorothée');
-    const euZebe = new Participant(moment([1981, 9, 26]), 'Jean');
+    const julie = new Participant(moment([1981, 4, 15]), 'Julie');
+    const euZebe = new Participant(moment([1981, 9, 22]), 'euZèbe');
 
     expect(getDateForAccruedAges(40, julie, euZebe)).toEqual(moment(euZebe.dateOfBirth).year(2001));
+})
+
+test('allow also array of participants', () => {
+    const julie = new Participant(moment([1981, 4, 15]), 'Julie');
+    const euZebe = new Participant(moment([1981, 9, 22]), 'euZèbe');
+
+    expect(getDateForAccruedAges(40, [julie, euZebe])).toEqual(moment(euZebe.dateOfBirth).year(2001));
 })
