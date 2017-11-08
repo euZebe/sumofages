@@ -9,10 +9,10 @@ export default class Participant {
     name: string;
     dateOfBirth: moment;
 
-    constructor(dateOfBirth: moment = moment(), name: string = '') {
+    constructor(dateOfBirth: moment, name: string = '') {
         this.id = shortid.generate();
         this.name = name;
-        this.dateOfBirth = moment(dateOfBirth.startOf('day'));
+        this.dateOfBirth = dateOfBirth ? moment(dateOfBirth.startOf('day')) : undefined;
     }
 
     get age(): number {

@@ -3,11 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "http://euzebe.github.io/sumofages",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
   "dependencies": {
     "bootstrap": "4.0.0-beta",
     "moment": "2.19.1",
     "react": "^16.0.0",
-    "react-datepicker": "0.60.0",
+    "react-datepicker": "0.60.2",
     "react-dom": "^16.0.0",
     "reactstrap": "5.0.0-alpha.3",
     "shortid": "2.2.8"
@@ -17,13 +25,5 @@
     "gh-pages": "1.0.0",
     "react-scripts": "1.0.16",
     "sync-exec": "^0.6.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
   }
 }

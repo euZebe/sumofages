@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import moment from 'moment'
-// import DatePicker from 'react-datepicker'
 import { Input } from 'reactstrap'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css';
 
 const DATE_FORMAT = 'DD/MM/YYYY';
 
@@ -10,21 +10,19 @@ export default class ParticipantInput extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { name: '', dateOfBirth: '' };
+        this.state = { name: '', dateOfBirth: null };
     }
 
     handleValueChanged = (field) => {
         this.setState({ [field.target.name]: field.target.value });
     }
 
-    handleDateOfBirthChanged = (field) => {
+    handleDateOfBirthChanged = (dateOfBirth) => {
         const { participant } = this.props;
-        const value = field.target.value;
-        this.setState({ [field.target.name]: value });
-        const dateAsMoment = moment(value, DATE_FORMAT, true);
-        if (dateAsMoment.isValid()) {
+        this.setState({ dateOfBirth });
+        if (dateOfBirth.isValid()) {
             participant.name = this.state.name;
-            participant.dateOfBirth = dateAsMoment;
+            participant.dateOfBirth = dateOfBirth;
             this.props.onDateOfBirthChange(participant);
         }
     }
@@ -40,12 +38,11 @@ export default class ParticipantInput extends React.Component {
                     onChange={this.handleValueChanged}
                     className='col-6'
                 />
-                <Input
-                    name='dateOfBirth'
-                    placeholder='date of birth (dd/MM/yyyy)'
-                    value={dateOfBirth}
+                <DatePicker
+                    selected={dateOfBirth}
                     onChange={this.handleDateOfBirthChanged}
-                    className='col-6'
+                    className='form-control'
+                    dateFormat={DATE_FORMAT}
                 />
             </div>
         );

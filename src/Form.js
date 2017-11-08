@@ -24,7 +24,7 @@ export default class Form extends React.Component {
         const { participants } = this.state;
         // TODO update the Participant according to its ID ; parse its dateOfBirth
         participants.splice(
-            participants.indexOf(participants.filter(p => p.id === updated.id)),
+            participants.indexOf(participants.filter(p => p.id === updated.id)[0]),
             1,
             updated
         );
@@ -34,12 +34,13 @@ export default class Form extends React.Component {
         if (allDatesFilled) {
             this.addParticipant();
         }
+        this.setState({ error: '' })
     }
 
     setExpectedAge = (field) => {
         this.setState({
             expectedAge: Number.parseInt(field.target.value, 10) || undefined,
-            resultDate: ''
+            resultDate: '',
         });
     }
 
@@ -59,7 +60,6 @@ export default class Form extends React.Component {
         const disableProcess = !expectedAge && true;
         return (
             <div className='container'>
-                {error && <h6 className='error'>{error.message}</h6>}
                 <div className='row justify-content-center'>
                     <Input
                         type='number'
@@ -89,6 +89,7 @@ export default class Form extends React.Component {
                     >OK</Button>
                 </div>
                 {resultDate && <h6>You will reach {expectedAge} years old the {resultDate.format('DD/MM/YYYY')}</h6>}
+                {error && <h6 className='error'>{error.message}</h6>}
             </div>
         );
     }
