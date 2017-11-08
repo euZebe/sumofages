@@ -2,7 +2,7 @@
   "name": "sumofages",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://euzebe.github.io/sumofages",
+  "homepage": "http://euzebe.github.io/sumofages/",
   "dependencies": {
     "bootstrap": "4.0.0-beta",
     "moment": "2.19.1",
