@@ -58,25 +58,36 @@ export default class Form extends React.Component {
         const { participants, resultDate, expectedAge, error } = this.state;
         const disableProcess = !expectedAge && true;
         return (
-            <div>
-                <h5>Participants</h5>
+            <div className='container'>
                 {error && <h6 className='error'>{error.message}</h6>}
-                {participants.map((p, index) =>
+                <div className='row justify-content-center'>
+                    <Input
+                        type='number'
+                        name='expectedAge'
+                        placeholder='expected age'
+                        onChange={this.setExpectedAge}
+                        value={expectedAge}
+                        className='col-4'
+                    />
+                </div>
+
+                {participants.map(p =>
                     <ParticipantInput
                         key={p.id}
-                        index={index}
                         participant={p}
                         onDateOfBirthChange={this.handleDateOfBirthChange}
                     />)
                 }
-                <Input
-                    type='number'
-                    name='expectedAge'
-                    placeholder='expected age'
-                    onChange={this.setExpectedAge}
-                    value={expectedAge}
-                />
-                <Button color='primary' type='submit' onClick={this.process} disabled={disableProcess}>OK</Button>
+
+                <div className='row'>
+                    <Button
+                        color='primary'
+                        type='submit'
+                        onClick={this.process}
+                        disabled={disableProcess}
+                        className='col-12'
+                    >OK</Button>
+                </div>
                 {resultDate && <h6>You will reach {expectedAge} years old the {resultDate.format('DD/MM/YYYY')}</h6>}
             </div>
         );

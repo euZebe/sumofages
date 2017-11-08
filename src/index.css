@@ -4,16 +4,24 @@ body {
     font-family: sans-serif;
 }
 
-.participant-input {
-    display: flex;
-    align-items: flex-start;
-    margin: 3px 10px 3px 10px;
-}
-
 .error {
     color: red;
 }
 
+.row ~ .row {
+    margin-top: 5px;
+}
+
 button {
     margin-top: 3px;
+}
+
+h6 {
+    margin-top: 20px;
+}
+
+@media(min-width:576px) {
+    .container {
+        width: 80vw;
+    }
 }

@@ -30,22 +30,22 @@ export default class ParticipantInput extends React.Component {
     }
 
     render() {
-        const { index } = this.props;
         const { name, dateOfBirth } = this.state;
         return (
-            <div className='participant-input'>
-                <label>#{index}</label>
+            <div className='row justify-content-around'>
                 <Input
                     name='name'
                     placeholder='name'
                     value={name}
                     onChange={this.handleValueChanged}
+                    className='col-6'
                 />
                 <Input
                     name='dateOfBirth'
-                    placeholder='dd/MM/yyyy'
+                    placeholder='date of birth (dd/MM/yyyy)'
                     value={dateOfBirth}
                     onChange={this.handleDateOfBirthChanged}
+                    className='col-6'
                 />
             </div>
         );
