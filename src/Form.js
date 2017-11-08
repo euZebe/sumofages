@@ -94,8 +94,10 @@ export default class Form extends React.Component {
                     clearAll={this.clearAll}
                 />
 
-                {resultDate && <h6>{expectedAge} years old reached on the {resultDate.format('DD/MM/YYYY')}</h6>}
-                {error && <h6 className='error'>{error.message}</h6>}
+                <div className='row justify-content-center'>
+                    {resultDate && <h6>{expectedAge} years old reached on the {resultDate.format('DD/MM/YYYY')}</h6>}
+                    {error && <h6 className='error'>{error.message}</h6>}
+                </div>
             </div>
         );
     }
