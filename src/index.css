@@ -13,7 +13,7 @@ body {
 }
 
 button {
-    margin-top: 3px;
+    margin: 3px 5px 3px 5px;
 }
 
 h6 {
@@ -26,3 +26,16 @@ h6 {
     }
 }
 
+@media(min-width:992px) {
+    .container {
+        width: 60vw;
+    }
+}
+
+#footer {
+    position: fixed;
+    bottom: 5px;
+    font-size: 0.8em;
+    text-align: center;
+    width: 100%;
+}

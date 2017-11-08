@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, Input } from 'reactstrap';
+import { Input } from 'reactstrap';
 import Participant from './model/Participant'
 import ParticipantInput from './ParticipantInput'
 import { getDateForAccruedAges } from './model/age-calculator'
+import { FormButtons } from './FormButtons'
 
 export default class Form extends React.Component {
 
@@ -55,9 +56,17 @@ export default class Form extends React.Component {
         }
     }
 
+    clearAll = () => {
+        this.setState({
+            participants: [new Participant()],
+            expectedAge: '',
+            resultDate: '',
+        })
+    }
+
     render() {
         const { participants, resultDate, expectedAge, error } = this.state;
-        const disableProcess = !expectedAge && true;
+        const processButtonDisabled = !expectedAge && true;
         return (
             <div className='container'>
                 <div className='row justify-content-center'>
@@ -79,16 +88,13 @@ export default class Form extends React.Component {
                     />)
                 }
 
-                <div className='row'>
-                    <Button
-                        color='primary'
-                        type='submit'
-                        onClick={this.process}
-                        disabled={disableProcess}
-                        className='col-12'
-                    >OK</Button>
-                </div>
-                {resultDate && <h6>You will reach {expectedAge} years old the {resultDate.format('DD/MM/YYYY')}</h6>}
+                <FormButtons
+                    process={this.process}
+                    processButtonDisabled={processButtonDisabled}
+                    clearAll={this.clearAll}
+                />
+
+                {resultDate && <h6>{expectedAge} years old reached on the {resultDate.format('DD/MM/YYYY')}</h6>}
                 {error && <h6 className='error'>{error.message}</h6>}
             </div>
         );

@@ -30,7 +30,7 @@ export default class ParticipantInput extends React.Component {
     render() {
         const { name, dateOfBirth } = this.state;
         return (
-            <div className='row justify-content-around'>
+            <div className='row justify-content-center'>
                 <Input
                     name='name'
                     placeholder='name'
@@ -43,6 +43,7 @@ export default class ParticipantInput extends React.Component {
                     onChange={this.handleDateOfBirthChanged}
                     className='form-control'
                     dateFormat={DATE_FORMAT}
+                    placeholderText='date of birth'
                 />
             </div>
         );
