@@ -12,7 +12,7 @@
   "expected_age_label": "âge attendu",
   "result_singular": "an atteint le",
   "result_plural": "ans atteints le",
-  "date_format": "jj/mm/aaaa",
+  "date_format": "DD/MM/YYYY",
   "error_no_participant": "Aucun participant défini",
   "error_no_age_expected": "Aucun âge défini"
 }

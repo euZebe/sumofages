@@ -70,6 +70,8 @@ class Form extends React.Component {
         const processButtonDisabled = !expectedAge && true;
 
         const resultMessageKey = expectedAge >= 2 ? 'result_plural' : 'result_singular';
+	const date_format = t('date_format');
+	console.log(date_format);
 
         return (
             <div className='container'>
@@ -99,7 +101,7 @@ class Form extends React.Component {
                 />
 
                 <div className='row justify-content-center'>
-                    {resultDate && <h6>{expectedAge} {t(resultMessageKey)} {resultDate.format(t('date_format'))}</h6>}
+                    {resultDate && <h6>{expectedAge} {t(resultMessageKey)} {resultDate.format(date_format)}</h6>}
                     {error && <h6 className='error'>{error.message}</h6>}
                 </div>
             </div>
