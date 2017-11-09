@@ -4,8 +4,8 @@ import moment from 'moment'
 
 import Participant from './Participant'
 
-const NoParticipantError = new Error('No participant');
-const NoExpectationError = new Error('No expected age');
+const NoParticipantError = new Error('error_no_participant');
+const NoExpectationError = new Error('error_no_age_expected');
 
 class InvalidParticipantDateOfBirth extends Error {
     constructor(invalidParticipant) {

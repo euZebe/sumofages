@@ -14,10 +14,14 @@
   "dependencies": {
     "bootstrap": "4.0.0-beta",
     "font-awesome": "4.7.0",
+    "i18next": "10.0.7",
+    "i18next-browser-languagedetector": "2.1.0",
     "moment": "2.19.1",
     "react": "^16.0.0",
     "react-datepicker": "0.60.2",
     "react-dom": "^16.0.0",
+    "react-flag-icon-css": "1.0.23",
+    "react-i18next": "6.1.0",
     "reactstrap": "5.0.0-alpha.3",
     "shortid": "2.2.8"
   },

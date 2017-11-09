@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { translate } from 'react-i18next'
 import { Input } from 'reactstrap'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css';
 
 const DATE_FORMAT = 'DD/MM/YYYY';
 
-export default class ParticipantInput extends React.Component {
+class ParticipantInput extends React.Component {
 
     constructor(props) {
         super(props);
@@ -28,12 +29,13 @@ export default class ParticipantInput extends React.Component {
     }
 
     render() {
+        const { t } = this.props;
         const { name, dateOfBirth } = this.state;
         return (
             <div className='row justify-content-center'>
                 <Input
                     name='name'
-                    placeholder='name'
+                    placeholder={t('name_label')}
                     value={name}
                     onChange={this.handleValueChanged}
                     className='col-6'
@@ -43,7 +45,7 @@ export default class ParticipantInput extends React.Component {
                     onChange={this.handleDateOfBirthChanged}
                     className='form-control'
                     dateFormat={DATE_FORMAT}
-                    placeholderText='date of birth'
+                    placeholderText={t('date_of_birth_label')}
                 />
             </div>
         );
@@ -55,3 +57,5 @@ ParticipantInput.propTypes = {
     participant: PropTypes.object,
     index: PropTypes.number,
 }
+
+export default translate()(ParticipantInput);
