@@ -1,11 +1,12 @@
 import React from 'react';
 import { Input } from 'reactstrap';
-import Participant from './model/Participant'
+import { translate } from 'react-i18next';
+import Participant from '../model/Participant'
 import ParticipantInput from './ParticipantInput'
-import { getDateForAccruedAges } from './model/age-calculator'
-import { FormButtons } from './FormButtons'
+import { getDateForAccruedAges } from '../model/age-calculator'
+import FormButtons from './FormButtons'
 
-export default class Form extends React.Component {
+class Form extends React.Component {
 
     constructor() {
         super();
@@ -65,15 +66,19 @@ export default class Form extends React.Component {
     }
 
     render() {
+        const { t } = this.props;
         const { participants, resultDate, expectedAge, error } = this.state;
         const processButtonDisabled = !expectedAge && true;
+
+        const resultMessageKey = expectedAge >= 2 ? 'result_plural' : 'result_singular';
+
         return (
             <div className='container'>
                 <div className='row justify-content-center'>
                     <Input
                         type='number'
                         name='expectedAge'
-                        placeholder='expected age'
+                        placeholder={t('expected_age_label')}
                         onChange={this.setExpectedAge}
                         value={expectedAge}
                         className='col-4'
@@ -94,9 +99,13 @@ export default class Form extends React.Component {
                     clearAll={this.clearAll}
                 />
 
-                {resultDate && <h6>{expectedAge} years old reached on the {resultDate.format('DD/MM/YYYY')}</h6>}
-                {error && <h6 className='error'>{error.message}</h6>}
+                <div className='row justify-content-center'>
+                    {resultDate && <h6>{expectedAge} {t(resultMessageKey)} {resultDate.format(t('date_format'))}</h6>}
+                    {error && <h6 className='error'>{error.message}</h6>}
+                </div>
             </div>
         );
     }
 }
+
+export default translate()(Form);

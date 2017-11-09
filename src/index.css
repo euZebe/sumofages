@@ -31,15 +31,3 @@ h6 {
         width: 60vw;
     }
 }
-
-#footer {
-    position: fixed;
-    bottom: 5px;
-    font-size: 0.8em;
-    text-align: center;
-    width: 100%;
-}
-
-.jumbotron > p {
-    text-align: center;
-}

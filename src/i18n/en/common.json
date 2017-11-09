@@ -1,0 +1,18 @@
+{
+  "howto_title": "How to use it ?",
+  "howto_step1": "Enter the cumulative expected age",
+  "howto_step2": "Enter each person date of birth",
+  "howto_step3": "Get the date when the expected age is reached.",
+
+  "name_label": "Name",
+  "date_of_birth_label": "DD/MM/YYYY",
+  "process_button": "Go !",
+  "clear_button": "Clear all",
+
+  "expected_age_label": "Expected age",
+  "result_singular": "years old reached on the",
+  "result_plural": "year old reached on the",
+  "date_format": "DD/MM/YYYY",
+  "error_no_participant": "No person defined",
+  "error_no_age_expected": "No expected age defined"
+}
