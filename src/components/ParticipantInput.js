@@ -5,8 +5,6 @@ import { Input } from 'reactstrap'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css';
 
-const DATE_FORMAT = 'DD/MM/YYYY';
-
 class ParticipantInput extends React.Component {
 
     constructor(props) {
@@ -31,6 +29,8 @@ class ParticipantInput extends React.Component {
     render() {
         const { t } = this.props;
         const { name, dateOfBirth } = this.state;
+	const DATE_FORMAT = t('date_format');
+
         return (
             <div className='row justify-content-center'>
                 <Input
