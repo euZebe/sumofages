@@ -70,7 +70,7 @@ class Form extends React.Component {
         const processButtonDisabled = !expectedAge && true;
 
         const resultMessageKey = expectedAge >= 2 ? 'result_plural' : 'result_singular';
-	const date_format = t('date_format');
+	const date_format = t('date_format_displayed');
 	console.log(date_format);
 
         return (

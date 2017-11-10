@@ -12,7 +12,8 @@
   "expected_age_label": "Expected age",
   "result_singular": "years old reached on the",
   "result_plural": "year old reached on the",
-  "date_format": "MM/DD/YYYY",
+  "date_format_accepted": "M/D/YYYY",
+  "date_format_displayed": "MM/DD/YYYY",
   "error_no_participant": "No person defined",
   "error_no_age_expected": "No expected age defined"
 }
