@@ -1,9 +1,8 @@
 import React from 'react';
 import { Input } from 'reactstrap';
 import { translate } from 'react-i18next';
-import Participant from '../model/Participant'
+import { getDateForAccruedAges, Participant } from 'sumofages-lib';
 import ParticipantInput from './ParticipantInput'
-import { getDateForAccruedAges } from '../model/age-calculator'
 import FormButtons from './FormButtons'
 
 class Form extends React.Component {

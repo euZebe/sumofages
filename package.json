@@ -23,7 +23,8 @@
     "react-flag-icon-css": "1.0.23",
     "react-i18next": "6.1.0",
     "reactstrap": "5.0.0-alpha.3",
-    "shortid": "2.2.8"
+    "shortid": "2.2.8",
+    "sumofages-lib": "1.0.5"
   },
   "devDependencies": {
     "flow-bin": "0.58.0",
