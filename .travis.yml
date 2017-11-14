@@ -4,11 +4,12 @@ install:
   - npm install
 
 script:
+  - cypress run --record
   - npm build
 
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $github_token # Set in travis-ci.org dashboard
-  on:
-    branch: master
+# deploy:
+#  provider: pages
+#  skip_cleanup: true
+#  github_token: $github_token # Set in travis-ci.org dashboard
+#  on:
+#    branch: master
