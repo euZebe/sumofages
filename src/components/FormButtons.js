@@ -15,6 +15,7 @@ class FormButtons extends React.Component {
                     disabled={processButtonDisabled}
                 ><span className="fa fa-play" /> {t('process_button')}</Button>
                 <Button
+                    id='clear_button'
                     color='outline-secondary'
                     aria-pressed='false'
                     onClick={clearAll}

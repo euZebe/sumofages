@@ -100,8 +100,8 @@ class Form extends React.Component {
                 />
 
                 <div className='row justify-content-center'>
-                    {resultDate && <h6>{expectedAge} {t(resultMessageKey)} {resultDate.format(date_format)}</h6>}
-                    {error && <h6 className='error'>{error.message}</h6>}
+                    {resultDate && <h6 id="result">{expectedAge} {t(resultMessageKey)} {resultDate.format(date_format)}</h6>}
+                    {error && <h6 id="error" className='error'>{error.message}</h6>}
                 </div>
             </div>
         );

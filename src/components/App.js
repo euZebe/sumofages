@@ -21,7 +21,7 @@ class App extends React.Component {
                 <NavBar />
 
                 <Jumbotron>
-                    <h6>{t('howto_title')}</h6>
+                    <h6 id='howto_title'>{t('howto_title')}</h6>
                     <ul>
                         <li>{t('howto_step1')}</li>
                         <li>{t('howto_step2')}</li>

@@ -18,10 +18,10 @@ export default class NavBar extends React.Component {
                 <a className="navbar-brand" href="#">Sumofages</a>
 
                 <div className="navbar-right">
-                    <span onClick={this.toEnglish}>
+                    <span id="lang_en" onClick={this.toEnglish}>
                         <FlagIcon code="gb" />
                     </span>
-                    <span onClick={this.toFrench}>
+                    <span id="lang_fr" onClick={this.toFrench}>
                         <FlagIcon code="fr" />
                     </span>
                     <a href="http://github.com/euzebe/sumofages">
