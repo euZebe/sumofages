@@ -23,9 +23,10 @@ before_script:
   ## else it would block execution and hang travis
   - npm start -- --silent &
 
-    
+
 script:
   - cypress run --record
+  - npm run deploy
 
 # deploy:
 #  provider: pages
@@ -33,7 +34,3 @@ script:
 #  github_token: $github_token # Set in travis-ci.org dashboard
 #  on:
 #    branch: master
-
-branches:
-  only:
-    - travis-ci
