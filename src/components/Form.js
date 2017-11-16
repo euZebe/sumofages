@@ -1,4 +1,5 @@
 import React from 'react';
+import { func } from 'prop-types';
 import { Input } from 'reactstrap';
 import { translate } from 'react-i18next';
 import { getDateForAccruedAges, Participant } from 'sumofages-lib';
@@ -69,8 +70,7 @@ class Form extends React.Component {
         const processButtonDisabled = !expectedAge && true;
 
         const resultMessageKey = expectedAge >= 2 ? 'result_plural' : 'result_singular';
-	const date_format = t('date_format_displayed');
-	console.log(date_format);
+        const date_format = t('date_format_displayed');
 
         return (
             <div className='container'>
@@ -100,12 +100,17 @@ class Form extends React.Component {
                 />
 
                 <div className='row justify-content-center'>
-                    {resultDate && <h6 id="result">{expectedAge} {t(resultMessageKey)} {resultDate.format(date_format)}</h6>}
+                    {resultDate &&
+                    <h6 id="result">{expectedAge} {t(resultMessageKey)} {resultDate.format(date_format)}</h6>}
                     {error && <h6 id="error" className='error'>{error.message}</h6>}
                 </div>
             </div>
         );
     }
 }
+
+Form.propTypes = {
+    t: func.isRequired,
+};
 
 export default translate()(Form);

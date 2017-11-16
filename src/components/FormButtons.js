@@ -1,4 +1,5 @@
 import React from 'react'
+import { func, bool } from 'prop-types'
 import { Button } from 'reactstrap'
 import { translate } from 'react-i18next'
 import 'font-awesome/css/font-awesome.min.css'
@@ -25,6 +26,13 @@ class FormButtons extends React.Component {
         );
 
     }
+}
+
+FormButtons.propTypes = {
+    process: func.isRequired,
+    processButtonDisabled: bool.isRequired,
+    clearAll: func.isRequired,
+    t: func.isRequired,
 }
 
 export default translate()(FormButtons);

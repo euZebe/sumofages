@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { func, object } from 'prop-types'
 import moment from 'moment'
 import { translate } from 'react-i18next'
 import i18next from 'i18next'
@@ -61,9 +61,8 @@ class ParticipantInput extends React.Component {
 }
 
 ParticipantInput.propTypes = {
-    onDateOfBirthChange: PropTypes.func,
-    participant: PropTypes.object,
-    index: PropTypes.number,
+    onDateOfBirthChange: func,
+    participant: object.isRequired,
 }
 
 export default translate()(ParticipantInput);

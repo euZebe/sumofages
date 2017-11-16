@@ -1,9 +1,9 @@
 import React from 'react';
 import { Jumbotron } from 'reactstrap';
 import { translate } from 'react-i18next';
-import './App.css';
 import Form from './Form';
 import NavBar from './NavBar';
+import Footer from './Footer'
 
 class App extends React.Component {
 
@@ -30,6 +30,8 @@ class App extends React.Component {
                     <hr className="my-2" />
                     <Form/>
                 </Jumbotron>
+
+                <Footer />
             </div>
         );
     }
