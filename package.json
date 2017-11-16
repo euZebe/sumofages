@@ -25,7 +25,7 @@
     "react-i18next": "6.1.0",
     "reactstrap": "5.0.0-alpha.3",
     "shortid": "2.2.8",
-    "sumofages-lib": "1.0.6"
+    "sumofages-lib": "1.0.7"
   },
   "devDependencies": {
     "cypress": "1.0.3",
