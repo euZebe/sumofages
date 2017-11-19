@@ -15,7 +15,7 @@ export default class NavBar extends React.Component {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
-                <a className="navbar-brand" href="#">Sumofages</a>
+                <a className="navbar-brand" href="/">Sumofages</a>
 
                 <div className="navbar-right">
                     <span id="lang_en" onClick={this.toEnglish}>
