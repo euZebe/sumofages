@@ -45,16 +45,16 @@ class ParticipantInput extends React.Component {
                     placeholder={t('name_label')}
                     value={name}
                     onChange={this.handleValueChanged}
-                    className='col-6'
+                    className='col-sm-6'
                 />
-                <DatePicker
-                    name='dateOfBirth'
-                    selected={dateOfBirth}
-                    onChange={this.handleDateOfBirthChanged}
-                    className='form-control'
-                    dateFormat={dateFormat}
-                    placeholderText={t('date_of_birth_label')}
-                />
+                    <DatePicker
+                        name='dateOfBirth'
+                        selected={dateOfBirth}
+                        onChange={this.handleDateOfBirthChanged}
+                        className='form-control'
+                        dateFormat={dateFormat}
+                        placeholderText={t('date_of_birth_label')}
+                    />
             </div>
         );
     }

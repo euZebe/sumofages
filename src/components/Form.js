@@ -81,7 +81,7 @@ class Form extends React.Component {
                         placeholder={t('expected_age_label')}
                         onChange={this.setExpectedAge}
                         value={expectedAge}
-                        className='col-4'
+                        className='col-sm-4'
                     />
                 </div>
 
