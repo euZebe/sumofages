@@ -31,6 +31,6 @@ script:
 # deploy:
 #  provider: pages
 #  skip_cleanup: true
-#  github_token: $github_token # Set in travis-ci.org dashboard
+#  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
 #  on:
 #    branch: master
