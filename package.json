@@ -10,7 +10,7 @@
     "cypress:open": "cypress open",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -dist build --repo https://$GITHUB_TOKEN@github.com/euzebe/sumofages.git"
   },
   "dependencies": {
     "bootstrap": "4.0.0-beta",
