@@ -27,10 +27,4 @@ before_script:
 script:
   - cypress run --record
   - npm run build
-
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-  on:
-    branch: master
+  - npm run deploy:travis
