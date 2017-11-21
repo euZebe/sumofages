@@ -30,6 +30,17 @@ h6 {
     font-size: 0.8rem;
 }
 
+.toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 200px;
+}
+
+div.react-toggle-track, div.react-toggle-track:hover, div.react-toggle--checked > div.react-toggle-track {
+    background-color: #007bff;
+}
+
 @media(min-width:576px) {
     .container {
         width: 80vw;
