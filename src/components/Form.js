@@ -61,9 +61,10 @@ class Form extends React.Component {
                 ? getDateForAccruedAges(expectedAge, ...clearedParticipants)
                 : getDateForAccruedDays(expectedAge, ...clearedParticipants);
             
-            this.setState({ resultDate });
+            this.setState({ resultDate, error: null });
         } catch (error) {
-            this.setState({ error });
+            console.error(error)
+            this.setState({ error, resultDate: null });
         }
     }
 
@@ -77,7 +78,6 @@ class Form extends React.Component {
 
     handleModeChange = () => {
         this.mode = computationModes.find(m => m !== this.mode);
-        console.log(this.mode)
     }
 
     render() {
