@@ -3,7 +3,9 @@
   "howto_step1": "Enter the cumulative expected age",
   "howto_step2": "Enter each person date of birth",
   "howto_step3": "Get the date when the expected age is reached.",
-
+  "howto_by_age": "'by age' computation sums ages increased at each birthday, ",
+  "howto_by_day": "'by day' computation sums days of all participants from their birth till it reaches the expected amount of years, converted in days.",
+  
   "name_label": "Name",
   "date_of_birth_label": "mm/dd/yyyy",
   "process_button": "Go !",
@@ -15,5 +17,8 @@
   "date_format_accepted": "M/D/YYYY",
   "date_format_displayed": "MM/DD/YYYY",
   "error_no_participant": "No person defined",
-  "error_no_age_expected": "No expected age defined"
+  "error_no_age_expected": "No expected age defined",
+  "by_age": "by age",
+  "by_day": "by day"
+
 }

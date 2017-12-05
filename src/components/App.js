@@ -27,6 +27,8 @@ class App extends React.Component {
                         <li>{t('howto_step2')}</li>
                         <li>{t('howto_step3')}</li>
                     </ul>
+                    <div>{t('howto_by_age')}</div>
+                    <div>{t('howto_by_day')}</div>
                     <hr className="my-2" />
                     <Form/>
                 </Jumbotron>
