@@ -33,7 +33,7 @@ describe('changing language', () => {
         cy.get(s.inputExpectedAge).type('10').should('have.value', '10')
         // When a dateOfBirth is defined
         cy.get(s.inputDateOfBirth).click()
-        cy.get('[aria-label="day-26"]').click()
+        cy.get('[aria-label="day-26"]').first().click()
 
         // When I click on the english flag
         cy.get(s.englishButton).click()
@@ -42,8 +42,11 @@ describe('changing language', () => {
         cy.get(s.submitButton).click()
 
         // Then the result label is in english format
-        cy.get(s.resultMessage).should('contain', '11/26/2027')
+        cy.get(s.resultMessage).contains(/\d{2}\/26\/\d{4}/)
         // Then the dateOfBirth label is in english format
-        cy.get(s.inputDateOfBirth).first().should('have.value', "11/26/2017")
+        cy.get(s.inputDateOfBirth).first().should(($input)=> {
+            const val = $input.val()
+            expect(val).to.match(/\d{2}\/26\/\d{4}/)
+        });
     })
 })
