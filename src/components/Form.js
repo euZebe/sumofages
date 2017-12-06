@@ -101,7 +101,7 @@ class Form extends React.Component {
                     />
                 </div>
                 <div className='row justify-content-center'>
-                    <div className='toggle col-sm-6'>
+                    <div className='toggle'>
                         <span>{t('by_age')}</span>
                         <Toggle icons={{checked: null, unchecked: null}} onChange={this.handleModeChange}/>
                         <span>{t('by_day')}</span>
