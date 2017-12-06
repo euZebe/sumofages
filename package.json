@@ -24,9 +24,10 @@
     "react-dom": "^16.0.0",
     "react-flag-icon-css": "1.0.23",
     "react-i18next": "6.1.0",
+    "react-toggle": "^4.0.2",
     "reactstrap": "5.0.0-alpha.3",
     "shortid": "2.2.8",
-    "sumofages-lib": "2.0.1"
+    "sumofages-lib": "2.0.4"
   },
   "devDependencies": {
     "cypress": "1.0.3",

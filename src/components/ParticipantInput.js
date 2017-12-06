@@ -34,10 +34,6 @@ class ParticipantInput extends React.Component {
         const { t } = this.props;
         const { name, dateOfBirth, dateFormat } = this.state;
 
-        if (this.props.participant.dateOfBirth) {
-            console.log(this.props.participant.dateOfBirth.format('DD/MM/YYYY'))
-        }
-
         return (
             <div className='row justify-content-center'>
                 <Input

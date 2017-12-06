@@ -2,9 +2,13 @@ import React from 'react';
 import { func } from 'prop-types';
 import { Input } from 'reactstrap';
 import { translate } from 'react-i18next';
-import { getDateForAccruedAges, Participant } from 'sumofages-lib';
+import 'react-toggle/style.css'
+import Toggle from 'react-toggle'
+import { getDateForAccruedAges, getDateForAccruedDays, Participant } from 'sumofages-lib';
 import ParticipantInput from './ParticipantInput'
 import FormButtons from './FormButtons'
+
+const computationModes = [ 'by-ages', 'by-days'];
 
 class Form extends React.Component {
 
@@ -15,6 +19,8 @@ class Form extends React.Component {
             expectedAge: '',
             resultDate: '',
         };
+
+        this.mode = computationModes[0];
     }
 
     addParticipant = () => {
@@ -49,10 +55,16 @@ class Form extends React.Component {
         const { expectedAge, participants } = this.state;
         try {
             // remove the last participant as it is a blank one
-            const resultDate = getDateForAccruedAges(expectedAge, ...participants.slice(0, participants.length - 1));
-            this.setState({ resultDate });
+            const clearedParticipants = participants.slice(0, participants.length - 1);
+
+            const resultDate = this.mode === computationModes[0]
+                ? getDateForAccruedAges(expectedAge, ...clearedParticipants)
+                : getDateForAccruedDays(expectedAge, ...clearedParticipants);
+            
+            this.setState({ resultDate, error: null });
         } catch (error) {
-            this.setState({ error });
+            console.error(error)
+            this.setState({ error, resultDate: null });
         }
     }
 
@@ -62,6 +74,10 @@ class Form extends React.Component {
             expectedAge: '',
             resultDate: '',
         })
+    }
+
+    handleModeChange = () => {
+        this.mode = computationModes.find(m => m !== this.mode);
     }
 
     render() {
@@ -81,8 +97,15 @@ class Form extends React.Component {
                         placeholder={t('expected_age_label')}
                         onChange={this.setExpectedAge}
                         value={expectedAge}
-                        className='col-sm-4'
+                        className='col-sm-6'
                     />
+                </div>
+                <div className='row justify-content-center'>
+                    <div className='toggle col-sm-6'>
+                        <span>{t('by_age')}</span>
+                        <Toggle icons={{checked: null, unchecked: null}} onChange={this.handleModeChange}/>
+                        <span>{t('by_day')}</span>
+                    </div>
                 </div>
 
                 {participants.map(p =>

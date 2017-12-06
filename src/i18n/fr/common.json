@@ -3,7 +3,9 @@
   "howto_step1": "Saisissez l'âge cumulé attendu",
   "howto_step2": "renseignez les dates de naissances des participants",
   "howto_step3": "obtenez la date à laquelle l'âge est atteint.",
-
+  "howto_by_age": "La méthode de calcul par âge cumule les âges aux dates anniversaire, ",
+  "howto_by_day": "La méthode de calcul par jour cumule les jours de l'ensemble des participants jusqu'à atteindre le nombre attendu d'années, converties en jours.",
+  
   "name_label": "Nom",
   "date_of_birth_label": "jj/mm/aaaa",
   "process_button": "Calculer",
@@ -15,5 +17,7 @@
   "date_format_accepted": "D/M/YYYY",
   "date_format_displayed": "DD/MM/YYYY",
   "error_no_participant": "Aucun participant défini",
-  "error_no_age_expected": "Aucun âge défini"
+  "error_no_age_expected": "Aucun âge défini",
+  "by_age": "par âge",
+  "by_day": "par jour"
 }
