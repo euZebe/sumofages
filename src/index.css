@@ -37,6 +37,10 @@ h6 {
     max-width: 200px;
 }
 
+.toggle>span {
+    margin: 0 0.4rem 0 0.4rem;
+}
+
 div.react-toggle-track, div.react-toggle-track:hover, div.react-toggle--checked > div.react-toggle-track {
     background-color: #007bff;
 }
